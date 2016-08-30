@@ -49,29 +49,23 @@
     <div class="container" >
 
         <div class="row" id="BrideGroom">
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <h3>The Groom</h3>
-                <div class="row">
-                    <div class="col-sm-3">
-                      <img id="bigpic" src="/media/WeddingParty/{{ groom.image }}">
-                    </div>
-                    <div class="col-md-8">
-                        <h3>{{ groom.name }}</h3>
-                    </div>
-                </div>
+
+                <h3>{{ groom.name }}</h3>
+
+                <img id="bigpic" src="/media/{{ groom.photo }}">
+
                 <p>{{ groom.description|linebreaks }}</p>
 
             </div>
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <h3>The Bride</h3>
-                <div class="row">
-                    <div class="col-sm-3">
-                        <img id="bigpic" src="/media/{{ bride.image }}">
-                    </div>
-                    <div class="col-md-8">
-                        <h3>{{ bride.name }}</h3>
-                    </div>
-                </div>
+
+                <h3>{{ bride.name }}</h3>
+
+                <img id="bigpic" src="/media/{{ bride.photo }}">
+
                 <p>{{ bride.description|linebreaks }}</p>
 
             </div>
@@ -84,48 +78,33 @@
            <p> We cant wait to spend the day with you</p>
        </div>
 
-       <div id="weddingparty">
-            <h2>Our Wedding Party</h2>
-           <div class="row">
-               <div class = "col-sm-5">
 
-                   {% for member in party %}
-                       {% if not member.brideside %}
-                       <h3>{{ member.role }}</h3>
-                       <div class="row">
-                        <div class="col-sm-3">
-                            <img id="bigpic" src="/media/{{ member.image }}">
-                        </div>
-                        <div class="col-md-8">
-                            <h3>{{ member.name }}</h3>
-                        </div>
-                       </div>
-                       <p>{{ member.description|linebreaks }}</p>
-                       {% endif %}
-                   {% endfor %}
-               </div>
-               <div class ="col-sm-5">
-                <h3>Brides</h3>
-                   {% for member in party %}
-                       {% if member.brideside %}
-                       <h5>{{ member.role }}</h5>
-                       <div class="row">
-                        <div class="col-sm-3">
-                            <img id="bigpic" src="/media/{{ member.image }}">
-                        </div>
-                        <div class="col-md-8">
-                            <h3>{{ member.name }}</h3>
-                        </div>
-                       </div>
-                       <p>{{ member.description|linebreaks }}</p>
-                       {% endif %}
-                   {% endfor %}
-               </div>
-
-           <div>
-       </div>
        <div id="venue">
-
+       <h3>The Venues</h3>
+            <div class = 'row'>
+                <div class=" col-sm-6">
+                    {% for venue in venues %}
+                        {% if venue.church %}
+                            <h3>The Church</h3>
+                            <h4>{{ venue.name }}</h4>
+                            <div id="churchmap">
+                            <div>
+                            <p>{{ venue.url }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="col-sm-6">
+                    {% for venue in venues %}
+                        {% if not venue.church %}
+                            <h3>The Hotel</h3>
+                            <h4>{{ venue.name }}</h4>
+                            <div id="hotelmap">
+                            <div>
+                            <p>{{ venue.url }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
        </div>
     </div>
 

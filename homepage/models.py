@@ -33,4 +33,10 @@ class Party(models.Model):
     def __str__(self):
         return self.name
 
+class Venue(models.Model):
+    church=models.BooleanField(default=True)
+    name=models.CharField(max_length=500)
+    url=models.URLField()
+
+
 
