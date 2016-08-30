@@ -62,6 +62,11 @@
         <!-- /.container -->
     </nav>
 
+    <div class="mainbody">
+        {% block content %}
+        {% endblock %}
+    </div>
+
     <div class="container">
         <!-- Footer -->
         <footer>
@@ -88,6 +93,8 @@
         interval: 5000 //changes the speed
     })
     </script>
+    <!-- Script for the countdown feature-->
+  <script src="{% static 'js/countdown.js' %}"></script>
 
 </body>
 

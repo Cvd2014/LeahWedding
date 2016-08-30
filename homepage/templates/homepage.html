@@ -14,21 +14,21 @@
         <div class="carousel-inner">
             <div class="item active">
                 <!-- Set the first background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
+                <div class="fill" style="background-image:url('https://www.facebook.com/photo.php?fbid=10153250726980205&set=pb.528870204.-2207520000.1472095585.&type=3&theater');"></div>
                 <div class="carousel-caption">
-                    <h2>Caption 1</h2>
+                    <h2>Test</h2>
                 </div>
             </div>
             <div class="item">
                 <!-- Set the second background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
+                <div class="fill" style="background-image:url('https://www.facebook.com/photo.php?fbid=10153250726980205&set=pb.528870204.-2207520000.1472095585.&type=3&theater');"></div>
                 <div class="carousel-caption">
                     <h2>Caption 2</h2>
                 </div>
             </div>
             <div class="item">
                 <!-- Set the third background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
+                <div class="fill" style="background-image:url('https://www.facebook.com/photo.php?fbid=10153250726980205&set=pb.528870204.-2207520000.1472095585.&type=3&theater');"></div>
                 <div class="carousel-caption">
                     <h2>Caption 3</h2>
                 </div>
@@ -46,14 +46,14 @@
     </header>
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="container" >
 
         <div class="row" id="BrideGroom">
             <div class="col-md-5">
                 <h3>The Groom</h3>
                 <div class="row">
-                    <div class="col-md-3">
-                      <img id="bigpic" src="/media/{{ groom.image }}">
+                    <div class="col-sm-3">
+                      <img id="bigpic" src="/media/WeddingParty/{{ groom.image }}">
                     </div>
                     <div class="col-md-8">
                         <h3>{{ groom.name }}</h3>
@@ -65,7 +65,7 @@
             <div class="col-md-5">
                 <h3>The Bride</h3>
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-sm-3">
                         <img id="bigpic" src="/media/{{ bride.image }}">
                     </div>
                     <div class="col-md-8">
@@ -77,49 +77,52 @@
             </div>
         </div>
 
-       <div id="countdown">
+       <div id="countdown_timer">
            <h3>The countdown is on..</h3>
+           <div id="countdown">
+           </div>
+           <p> We cant wait to spend the day with you</p>
        </div>
 
        <div id="weddingparty">
             <h2>Our Wedding Party</h2>
-            <div class="row">
-                <div class="col-sm-5">
-                    {% for member in party %}
-                    {% if member.bride == False %}
-                        <h3>{{ member.role }}</h3>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <img id="smallpic" src="/media/{{ member.image }}">
-                            </div>
-                            <div class="col-md-8">
-                                <h3>{{ member.name }}</h3>
-                            </div>
+           <div class="row">
+               <div class = "col-sm-5">
+
+                   {% for member in party %}
+                       {% if not member.brideside %}
+                       <h3>{{ member.role }}</h3>
+                       <div class="row">
+                        <div class="col-sm-3">
+                            <img id="bigpic" src="/media/{{ member.image }}">
                         </div>
-                        <p>{{ member.description|linebreaks }}</p>
-
-                    {% endif %}
-                    {% endfor %}
-                </div>
-
-                <div class="col-sm-5">
-                    {% for member in party %}
-                    {% if member.bride == False %}
-                        <h3>{{ member.role }}</h3>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <img id="smallpic" src="/media/{{ member.image }}">
-                            </div>
-                            <div class="col-md-8">
-                                <h3>{{ member.name }}</h3>
-                            </div>
+                        <div class="col-md-8">
+                            <h3>{{ member.name }}</h3>
                         </div>
-                        <p>{{ member.description|linebreaks }}</p>
+                       </div>
+                       <p>{{ member.description|linebreaks }}</p>
+                       {% endif %}
+                   {% endfor %}
+               </div>
+               <div class ="col-sm-5">
+                <h3>Brides</h3>
+                   {% for member in party %}
+                       {% if member.brideside %}
+                       <h5>{{ member.role }}</h5>
+                       <div class="row">
+                        <div class="col-sm-3">
+                            <img id="bigpic" src="/media/{{ member.image }}">
+                        </div>
+                        <div class="col-md-8">
+                            <h3>{{ member.name }}</h3>
+                        </div>
+                       </div>
+                       <p>{{ member.description|linebreaks }}</p>
+                       {% endif %}
+                   {% endfor %}
+               </div>
 
-                    {% endif %}
-                    {% endfor %}
-                </div>
-            </div>
+           <div>
        </div>
        <div id="venue">
 
